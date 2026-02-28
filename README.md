@@ -1,2 +1,21 @@
 # odin-members-only
-A Message Board where only members can see the authors
+
+A Message Board where only members can see the authors.
+
+This is a node project from The Odin Project.
+
+By building from scratch, this will help solidify my recent learning of back-end authentication server-side website rending using:
+
+- Node,
+- Express,
+- ejs for views,
+- Model View Controller (MVC) design pattern,
+- express-validator for forms,
+- PostgreSQL for the database, and
+- Passport for authentication.
+
+The app and database is hosted on railway.
+
+Live Link: https://mrmine-members-only.up.railway.app/
+
+Screenshot:
