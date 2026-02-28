@@ -11,8 +11,9 @@ By building from scratch, this will help solidify my recent learning of back-end
 - ejs for views,
 - Model View Controller (MVC) design pattern,
 - express-validator for forms,
-- PostgreSQL for the database, and
-- Passport for authentication.
+- PostgreSQL for the database,
+- Passport for authentication, and
+- bcryptjs for passwords.
 
 The app and database is hosted on railway.
 
