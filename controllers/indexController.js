@@ -2,7 +2,11 @@ const db = require("../db/queries");
 
 async function getAllPosts(req, res) {
   const posts = await db.getAllPosts();
-  res.render("index", { title: "Members Only Board", posts: posts });
+  res.render("index", {
+    title: "Members Only Board",
+    posts: posts,
+    user: req.user,
+  });
 }
 
 function signUpGet(req, res) {
@@ -14,13 +18,19 @@ function newPostGet(req, res) {
 }
 
 function newMemberGet(req, res) {
+  // password check
   res.render("newMember", { title: "Join the Club" });
 }
 
 async function newMemberPost(req, res) {
   // get user id for below
+
   const posts = await db.changeToMember(userID);
-  res.render("index", { title: "Members Only Board", posts: posts });
+  res.render("index", {
+    title: "Members Only Board",
+    posts: posts,
+    user: req.user,
+  });
 }
 
 module.exports = {

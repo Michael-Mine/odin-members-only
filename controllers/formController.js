@@ -2,27 +2,59 @@ const db = require("../db/queries");
 const { body, validationResult, matchedData } = require("express-validator");
 const bcrypt = require("bcryptjs");
 
-async function signUpPost(req, res, next) {
-  try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    await pool.query("INSERT INTO users (username, password) VALUES ($1, $2)", [
-      req.body.username,
-      hashedPassword,
-    ]);
-    res.redirect("/");
-  } catch (err) {
-    console.error(err);
-    return next(err);
-  }
-}
-
-const lengthErr = "must be between 1 and 20 characters.";
+const lengthErr = "must be between 1 and 40 characters.";
 const textErr = "must be between 1 and 300 characters.";
+
+const validateSignUpPost = [
+  body("firstName")
+    .trim()
+    .isLength({ min: 1, max: 40 })
+    .withMessage(`Name ${lengthErr}`),
+  body("lastName")
+    .trim()
+    .isLength({ min: 1, max: 40 })
+    .withMessage(`Name ${lengthErr}`),
+  body("username")
+    .trim()
+    .isEmail()
+    .isLength({ min: 1, max: 40 })
+    .withMessage(`Name ${lengthErr}`),
+  body("password")
+    .trim()
+    .isLength({ min: 1, max: 40 })
+    .withMessage(`Name ${lengthErr}`),
+];
+
+const signUpPost = [
+  validateSignUpPost,
+  async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).render("signUp", {
+        title: "Sign Up",
+        errors: errors.array(),
+      });
+    }
+    try {
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+      await db.insertUser({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        username: req.body.username,
+        hashedPassword,
+      });
+      res.redirect("/");
+    } catch (err) {
+      console.error(err);
+      return next(err);
+    }
+  },
+];
 
 const validatePost = [
   body("title")
     .trim()
-    .isLength({ min: 1, max: 20 })
+    .isLength({ min: 1, max: 40 })
     .withMessage(`Name ${lengthErr}`),
   body("text")
     .trim()

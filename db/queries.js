@@ -5,6 +5,13 @@ async function getAllPosts() {
   return rows;
 }
 
+async function insertUser({ firstName, lastName, username, hashedPassword }) {
+  await pool.query(
+    "INSERT INTO users (firstName, lastName, username, password) VALUES ($1, $2, $3, $4)",
+    [firstName, lastName, username, hashedPassword],
+  );
+}
+
 async function insertPost({ title, text, added, userID }) {
   await pool.query(
     "INSERT INTO posts (title, text, added, userID) VALUES ($1, $2, $3, $4)",
@@ -17,3 +24,10 @@ async function changeToMember(userID) {
     userID,
   ]);
 }
+
+module.exports = {
+  getAllPosts,
+  insertUser,
+  insertPost,
+  changeToMember,
+};

@@ -1,4 +1,4 @@
-const db = require("../db/queries");
+const pool = require("./pool");
 
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
