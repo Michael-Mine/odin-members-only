@@ -18,3 +18,5 @@ indexRouter.post("/new-post", formController.newPostPost);
 
 indexRouter.get("/join", indexController.newMemberGet);
 indexRouter.post("/join", indexController.newMemberPost);
+
+module.exports = indexRouter;
