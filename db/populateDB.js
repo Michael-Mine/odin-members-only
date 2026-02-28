@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS user_posts (
   title VARCHAR ( 255 ) NOT NULL,
   text TEXT NOT NULL,
   added TIMESTAMP WITH TIME ZONE,
-  user INTEGER REFERENCES users
+  userID INTEGER REFERENCES users
 );
 `;
 

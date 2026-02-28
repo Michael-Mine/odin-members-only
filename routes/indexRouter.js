@@ -1,19 +1,20 @@
 const { Router } = require("express");
 const indexRouter = Router();
-// const indexController = require("../controllers/indexController");
+const indexController = require("../controllers/indexController");
+const passportController = require("../controllers/passportController");
 
-indexRouter.get("/");
+indexRouter.get("/", indexController.getAllPosts);
 
-indexRouter.get("/sign-up");
-indexRouter.post("/sign-up");
+indexRouter.get("/sign-up", passportController);
+indexRouter.post("/sign-up", passportController);
 
-indexRouter.get("/join");
-indexRouter.post("/join");
+indexRouter.get("/log-in", passportController);
+indexRouter.post("/log-in", passportController);
 
-indexRouter.get("/log-in");
-indexRouter.post("/log-in");
+indexRouter.get("/log-out", passportController);
 
-indexRouter.get("/log-out");
+indexRouter.get("/new-post", indexController.newPostGet);
+indexRouter.post("/new-post", indexController.newPostPost);
 
-indexRouter.get("/new-message");
-indexRouter.post("/new-message");
+indexRouter.get("/join", indexController.newMemberGet);
+indexRouter.post("/join", indexController.newMemberPost);
