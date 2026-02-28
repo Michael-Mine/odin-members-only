@@ -1,0 +1,30 @@
+{
+  "name": "odin-members-only",
+  "version": "1.0.0",
+  "description": "A Message Board where only members can see the authors.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Michael-Mine/odin-members-only.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Michael-Mine/odin-members-only/issues"
+  },
+  "homepage": "https://github.com/Michael-Mine/odin-members-only#readme",
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "ejs": "^4.0.1",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "pg": "^8.19.0"
+  }
+}
