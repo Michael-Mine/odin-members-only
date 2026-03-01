@@ -5,23 +5,35 @@
     <title><%= title %></title>
   </head>
   <body>
-    <h1><%= title %><</h1>
-    <%- include("../partials/errors.ejs") %>
+    <h1><%= title %></h1>
 
-    <form action="/sign-up" method="POST">
-      <label for="firstName">First Name</label>
-      <input id="firstName" name="firstName" type="text" />
+    <% if (locals.user) {%>
+      <h1>You have already signed up as <%= user.firstname %> <%= user.lastname %></h1>
+      <a href="/join">Become a Member if you have the password</a>
+      <a href="/">Back to Home</a>
+    <% } else { %>
 
-      <label for="lastName">Last Name</label>
-      <input id="lastName" name="lastName" type="lastName" />
+      <%- include("../partials/errors.ejs") %>
 
-      <label for="username">Username</label>
-      <input id="username" name="username" type="text" />
+      <form action="/sign-up" method="POST">
+        <label for="firstName">First Name</label>
+        <input id="firstName" name="firstName" type="text" />
 
-      <label for="password">Password</label>
-      <input id="password" name="password" type="password" />
+        <label for="lastName">Last Name</label>
+        <input id="lastName" name="lastName" type="lastName" />
 
-      <button type="submit">Sign Up</button>
-    </form>
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" />
+
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" />
+
+        <label for="password-check">Confirm Password</label>
+        <input id="password-check" name="password-check" type="password" />
+
+        <button type="submit">Sign Up</button>
+      </form>
+
+    <%}%>
   </body>
 </html>

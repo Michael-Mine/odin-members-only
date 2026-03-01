@@ -18,11 +18,22 @@ const validateSignUpPost = [
     .trim()
     .isEmail()
     .isLength({ min: 1, max: 40 })
-    .withMessage(`Name ${lengthErr}`),
+    .withMessage(`Name ${lengthErr}`)
+    .custom(async (value) => {
+      const user = await db.checkUserExists(value);
+      if (user[0]) {
+        throw new Error("Email is already in use");
+      }
+    }),
   body("password")
     .trim()
     .isLength({ min: 1, max: 40 })
     .withMessage(`Name ${lengthErr}`),
+  body("password-check").custom((value, { req }) => {
+    if (value !== req.body.password) {
+      throw new Error("Passwords do not match");
+    } else return true;
+  }),
 ];
 
 const signUpPost = [
@@ -30,7 +41,7 @@ const signUpPost = [
   async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).render("signUp", {
+      return res.status(400).render("forms/signUp", {
         title: "Sign Up",
         errors: errors.array(),
       });
