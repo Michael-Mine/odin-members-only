@@ -19,6 +19,8 @@ indexRouter.post("/new-post", formController.newPostPost);
 indexRouter.get("/join", indexController.newMemberGet);
 indexRouter.post("/join", formController.newMemberPost);
 
+indexRouter.post("/admin", formController.postNewAdmin);
+
 module.exports = indexRouter;
 
 // add admin in join page or new view

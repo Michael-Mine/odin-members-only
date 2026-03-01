@@ -32,6 +32,10 @@
           <% if (locals.user && locals.user.member) {%>
             <p>By <%= post.firstname %> <%= post.lastname %> on <%= post.added %></p>
           <% } %>
+          
+          <% if (locals.user && locals.user.admin) {%>
+            <button>Delete Post</button>
+          <% } %>
         </li>
         <br>
       <% }); %>

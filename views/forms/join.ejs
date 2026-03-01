@@ -9,6 +9,16 @@
 
     <% if (locals.user && locals.user.member) {%>
       <p>You are already a member!</p>
+
+      <p>Enter the password to become admin to be able to delete posts.</p>
+      <form action="/admin" method="POST">
+
+        <label for="password">Password:</label>
+        <input id="password" name="password" type="password" />
+        
+        <button type="submit">Authorise</button>
+      </form>
+      <br>
       <a href="/">Back to Home</a>
 
     <% } else if (locals.user) {%>
@@ -23,7 +33,7 @@
         <button type="submit">Join</button>
       </form>
       <a href="/">Back to Home</a>
-      
+
     <% } else { %>
       <p>You need to log-in to join the club.</p>
       <br>

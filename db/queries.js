@@ -35,10 +35,15 @@ async function changeToMember(userID) {
   ]);
 }
 
+async function changeToAdmin(userID) {
+  await pool.query("UPDATE users SET admin = 'true' WHERE id = ($1)", [userID]);
+}
+
 module.exports = {
   getAllPosts,
   checkUserExists,
   insertUser,
   insertPost,
   changeToMember,
+  changeToAdmin,
 };
