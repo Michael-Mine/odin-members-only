@@ -78,16 +78,16 @@ const newPostPost = [
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).render("form", {
+      return res.status(400).render("forms/newPost", {
         title: "Add New Post",
+        user: req.user,
         errors: errors.array(),
       });
     }
-
     const { title, text } = matchedData(req);
     const added = new Date();
-    // add user id below
-    await db.insertPost({ title, text, added, user });
+    const userID = req.user.id;
+    await db.insertPost({ title, text, added, userID });
     res.redirect("/");
   },
 ];

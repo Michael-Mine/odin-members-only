@@ -15,20 +15,25 @@ function signUpGet(req, res) {
 }
 
 function newPostGet(req, res) {
-  res.render("newPost", { title: "Add New Post" });
+  res.render("forms/newPost", {
+    title: "Add New Post",
+    user: req.user,
+  });
 }
 
 function newMemberGet(req, res) {
-  // password check
-  res.render("newMember", { title: "Join the Club" });
+  res.render("newMember", {
+    title: "Join the Club",
+    user: req.user,
+  });
 }
 
 async function newMemberPost(req, res) {
+  // password check
   const userID = req.user.id;
   const posts = await db.changeToMember(userID);
   res.render("index", {
     title: "Members Only Board",
-    posts: posts,
     user: req.user,
   });
 }

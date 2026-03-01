@@ -20,3 +20,14 @@ indexRouter.get("/join", indexController.newMemberGet);
 indexRouter.post("/join", indexController.newMemberPost);
 
 module.exports = indexRouter;
+
+// add join view and test
+
+// add new post view and test
+
+// display messages on home page but
+// only show author and date to members
+
+// add admin in join page or new view
+
+// add delete button for admin for each post
