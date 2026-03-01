@@ -10,7 +10,7 @@ async function getAllPosts(req, res) {
 }
 
 function signUpGet(req, res) {
-  res.render("signUp", { title: "Sign Up" });
+  res.render("forms/signUp", { title: "Sign Up" });
 }
 
 function newPostGet(req, res) {
