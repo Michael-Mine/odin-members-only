@@ -22,18 +22,8 @@ function newPostGet(req, res) {
 }
 
 function newMemberGet(req, res) {
-  res.render("newMember", {
+  res.render("forms/join", {
     title: "Join the Club",
-    user: req.user,
-  });
-}
-
-async function newMemberPost(req, res) {
-  // password check
-  const userID = req.user.id;
-  const posts = await db.changeToMember(userID);
-  res.render("index", {
-    title: "Members Only Board",
     user: req.user,
   });
 }
@@ -43,5 +33,4 @@ module.exports = {
   signUpGet,
   newPostGet,
   newMemberGet,
-  newMemberPost,
 };

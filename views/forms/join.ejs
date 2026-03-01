@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+
+    <% if (locals.user && locals.user.member) {%>
+      <p>You are already a member!</p>
+      <a href="/">Back to Home</a>
+
+    <% } else if (locals.user) {%>
+      <%- include("../partials/errors.ejs") %>
+
+      <p>Enter the password to join the club</p>
+      <form action="/join" method="POST">
+
+        <label for="password">Password:</label>
+        <input id="password" name="password" type="password" />
+        
+        <button type="submit">Join</button>
+      </form>
+      <a href="/">Back to Home</a>
+      
+    <% } else { %>
+      <p>You need to log-in to join the club.</p>
+      <br>
+      <a href="/">Log In</a>
+    <%}%>
+  </body>
+</html>

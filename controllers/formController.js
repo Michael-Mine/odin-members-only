@@ -92,7 +92,33 @@ const newPostPost = [
   },
 ];
 
+const validateNewMember = [
+  body("password").custom((value, { req }) => {
+    if (value !== process.env.MEMBER_PASS) {
+      throw new Error("Password is incorrect");
+    } else return true;
+  }),
+];
+
+const newMemberPost = [
+  validateNewMember,
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).render("forms/join", {
+        title: "Join the Club",
+        user: req.user,
+        errors: errors.array(),
+      });
+    }
+    const userID = req.user.id;
+    await db.changeToMember(userID);
+    res.redirect("/");
+  },
+];
+
 module.exports = {
   signUpPost,
   newPostPost,
+  newMemberPost,
 };
