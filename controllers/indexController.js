@@ -7,6 +7,7 @@ async function getAllPosts(req, res) {
     posts: posts,
     user: req.user,
   });
+  console.log(req.user);
 }
 
 function signUpGet(req, res) {
@@ -23,8 +24,7 @@ function newMemberGet(req, res) {
 }
 
 async function newMemberPost(req, res) {
-  // get user id for below
-
+  const userID = req.user.id;
   const posts = await db.changeToMember(userID);
   res.render("index", {
     title: "Members Only Board",
