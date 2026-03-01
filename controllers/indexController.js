@@ -4,7 +4,7 @@ async function getAllPosts(req, res) {
   const posts = await db.getAllPosts();
   res.render("index", {
     title: "Members Only Board",
-    posts: posts,
+    posts,
     user: req.user,
   });
   console.log(req.user);

@@ -23,5 +23,18 @@
       </form>
       <a href="/sign-up">Sign Up!</a>
     <%}%>
+
+    <ol>
+      <% posts.forEach((post) => { %>
+        <li>
+          <p><%= post.title %></p>
+          <p><%= post.text %></p>
+          <% if (locals.user && locals.user.member) {%>
+            <p>By <%= post.firstname %> <%= post.lastname %> on <%= post.added %></p>
+          <% } %>
+        </li>
+        <br>
+      <% }); %>
+    </ol>
   </body>
 </html>

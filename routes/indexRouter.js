@@ -23,8 +23,6 @@ module.exports = indexRouter;
 
 // add join view and test
 
-// add new post view and test
-
 // display messages on home page but
 // only show author and date to members
 
