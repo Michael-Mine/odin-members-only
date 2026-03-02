@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title><%= title %></title>
-  </head>
+  <%- include("../partials/head.ejs") %>
   <body>
+    <%- include("../partials/nav.ejs") %>
     <h1><%= title %></h1>
 
     <% if (locals.user && locals.user.member) {%>
@@ -13,8 +11,10 @@
       <p>Enter the password to become admin to be able to delete posts.</p>
       <form action="/admin" method="POST">
 
-        <label for="password">Password:</label>
-        <input id="password" name="password" type="password" />
+        <p class="input-container">
+          <label class="input-label" for="password">Password:</label>
+          <input lass="input-field" id="password" name="password" type="password" />
+        </p>
         
         <button type="submit">Authorise</button>
       </form>
@@ -27,8 +27,10 @@
       <p>Enter the password to join the club</p>
       <form action="/join" method="POST">
 
-        <label for="password">Password:</label>
-        <input id="password" name="password" type="password" />
+        <p class="input-container">
+          <label class="input-label" for="password">Password:</label>
+          <input lass="input-field" id="password" name="password" type="password" />
+        </p>
         
         <button type="submit">Join</button>
       </form>
