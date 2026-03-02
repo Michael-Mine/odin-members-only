@@ -2,7 +2,7 @@ const pool = require("./pool");
 
 async function getAllPosts() {
   const { rows } = await pool.query(
-    "SELECT user_posts.id, user_posts.title, user_posts.text, user_posts.added, users.firstname, users.lastname FROM user_posts INNER JOIN users ON user_posts.id = users.id",
+    "SELECT user_posts.id, user_posts.title, user_posts.text, user_posts.added, users.firstname, users.lastname FROM user_posts INNER JOIN users ON user_posts.userid = users.id",
   );
   return rows;
 }

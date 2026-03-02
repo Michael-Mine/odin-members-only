@@ -2,6 +2,7 @@ const db = require("../db/queries");
 
 async function getAllPosts(req, res) {
   const posts = await db.getAllPosts();
+  console.log(posts);
   res.render("index", {
     title: "Members Only Board",
     posts,
@@ -10,7 +11,10 @@ async function getAllPosts(req, res) {
 }
 
 function signUpGet(req, res) {
-  res.render("forms/signUp", { title: "Sign Up" });
+  res.render("forms/signUp", {
+    title: "Sign Up",
+    user: req.user,
+  });
 }
 
 function newPostGet(req, res) {
