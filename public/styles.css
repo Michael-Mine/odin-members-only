@@ -175,6 +175,10 @@ h1 {
   font-family: "Montserrat", system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
+h2 {
+  margin: 10px;
+}
+
 ul {
   padding: 20px;
 }
@@ -186,6 +190,7 @@ li {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
   background-color: #e5e5e5;
   list-style: none;
+  text-align: left;
 }
 
 p {
