@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 
 const lengthErr = "must be between 1 and 40 characters.";
 const textErr = "must be between 1 and 300 characters.";
+const emailErr = "must be an email address";
 
 const validateSignUpPost = [
   body("firstName")
@@ -17,6 +18,7 @@ const validateSignUpPost = [
   body("username")
     .trim()
     .isEmail()
+    .withMessage(`Email ${emailErr}`)
     .isLength({ min: 1, max: 40 })
     .withMessage(`Name ${lengthErr}`)
     .custom(async (value) => {
