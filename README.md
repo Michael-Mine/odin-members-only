@@ -19,4 +19,4 @@ The app and database is hosted on railway.
 
 Live Link: https://mrmine-members-only.up.railway.app/
 
-Screenshot:
+![Screenshot](./public/images/screenshot-members-only.png)
