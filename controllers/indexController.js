@@ -7,7 +7,6 @@ async function getAllPosts(req, res) {
     posts,
     user: req.user,
   });
-  console.log(req.user);
 }
 
 function signUpGet(req, res) {

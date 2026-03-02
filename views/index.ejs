@@ -34,7 +34,10 @@
           <% } %>
           
           <% if (locals.user && locals.user.admin) {%>
-            <button>Delete Post</button>
+            <form action="/delete" method="POST">
+              <input type="hidden" name="postID" value="<%= post.id %>" />
+              <button type="submit">Delete Post</button>
+            </form>
           <% } %>
         </li>
         <br>

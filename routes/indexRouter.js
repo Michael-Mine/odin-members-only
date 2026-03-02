@@ -21,8 +21,6 @@ indexRouter.post("/join", formController.newMemberPost);
 
 indexRouter.post("/admin", formController.postNewAdmin);
 
+indexRouter.post("/delete", formController.postDeletePost);
+
 module.exports = indexRouter;
-
-// add admin in join page or new view
-
-// add delete button for admin for each post

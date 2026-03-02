@@ -2,7 +2,7 @@ const pool = require("./pool");
 
 async function getAllPosts() {
   const { rows } = await pool.query(
-    "SELECT user_posts.title, user_posts.text, user_posts.added, users.firstname, users.lastname FROM user_posts INNER JOIN users ON user_posts.id = users.id",
+    "SELECT user_posts.id, user_posts.title, user_posts.text, user_posts.added, users.firstname, users.lastname FROM user_posts INNER JOIN users ON user_posts.id = users.id",
   );
   return rows;
 }
@@ -39,6 +39,10 @@ async function changeToAdmin(userID) {
   await pool.query("UPDATE users SET admin = 'true' WHERE id = ($1)", [userID]);
 }
 
+async function deletePost(postID) {
+  await pool.query("DELETE FROM user_posts WHERE id = ($1)", [postID]);
+}
+
 module.exports = {
   getAllPosts,
   checkUserExists,
@@ -46,4 +50,5 @@ module.exports = {
   insertPost,
   changeToMember,
   changeToAdmin,
+  deletePost,
 };

@@ -142,9 +142,17 @@ const postNewAdmin = [
   },
 ];
 
+async function postDeletePost(req, res) {
+  const postID = req.body.postID;
+  console.log(req.body);
+  await db.deletePost(postID);
+  res.redirect("/");
+}
+
 module.exports = {
   signUpPost,
   newPostPost,
   newMemberPost,
   postNewAdmin,
+  postDeletePost,
 };

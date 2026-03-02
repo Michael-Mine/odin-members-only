@@ -23,7 +23,6 @@ function logOutGet(req, res, next) {
 
 passport.use(
   new LocalStrategy(async (username, password, done) => {
-    console.log("local");
     try {
       const { rows } = await pool.query(
         "SELECT * FROM users WHERE username = $1",
@@ -47,12 +46,10 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-  console.log("serializeUser");
   done(null, user.id);
 });
 
 passport.deserializeUser(async (id, done) => {
-  console.log("deserializeUser");
   try {
     const { rows } = await pool.query("SELECT * FROM users WHERE id = $1", [
       id,
